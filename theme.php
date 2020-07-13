@@ -85,12 +85,12 @@
 				<div class="header-content container">
 					<?= newEditableArea("{$Wcms->currentPage}_header", "
 	<h1>Hi! <span>I'm Watercolor.</span></h1>
-	<span>This is a detailed watercolor theme by <a href=\"https://stephanstanisic.nl\">Stephan Stanisic</a>.</span>
+	<span>This is a detailed watercolor theme by <a href=\"https://steph.tools\">Stephan Stanisic</a>.</span>
 
 	<div class=\"header-socials\">
-		<a class=\"fab fa-twitter\" href=\"https://nitter.net/Stephan_Stanisi\"></a>
-		<a class=\"fab fa-mastodon\" href=\"https://mas.to/@steph\"></a>
-		<a class=\"fas fa-comment\" href=\"http://delta.stanisic.nl/stephan\"></a>
+		<a href=\"https://nitter.net/\"><svg viewBox=\"0 0 496 512\"><use xlink:href=\"#fab-twitter\"></use></svg></a>
+		<a href=\"https://joinmastodon.org\"><svg viewBox=\"0 0 496 512\"><use xlink:href=\"#fab-mastodon\"></use></svg></a>
+		<a href=\"http://delta.chat\"><svg viewBox=\"0 0 496 512\"><use xlink:href=\"#fas-comment\"></use></svg></a>
 	</div>
 	") ?>
 				</div>
