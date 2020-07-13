@@ -1,0 +1,24 @@
+/** Nice, no javascript! **/
+
+body {
+  overflow: auto;
+}
+body:before, .page nav {
+  background-image: url("images/background-opt2.jpeg");
+}
+nav {
+  opacity: 1 !important;
+}
+@media screen and (max-width: 608px) {
+  body:before, body:after {
+    position: absolute;
+  }
+  body:before {
+    background: url("images/background-opt2-smol.jpeg") left bottom;
+    transform: scaleY(-1);
+  }
+  body:after, .page nav {
+    background: url("images/background-opt2-smol.jpeg") repeat-x left top,
+              url("images/background-opt2-smol.jpeg") repeat-x left 2160px;
+  }
+}

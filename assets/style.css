@@ -1,0 +1,537 @@
+/*
+ *  Reset
+ */
+
+	 /* http://meyerweb.com/eric/tools/css/reset/
+	    v2.0 | 20110126
+	    License: none (public domain)
+	 */
+
+	 * {
+		 box-sizing: border-box;
+	 }
+
+	 html, body, div, span, applet, object, iframe,
+	 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	 a, abbr, acronym, address, big, cite, code,
+	 del, dfn, em, img, ins, kbd, q, s, samp,
+	 small, strike, strong, sub, sup, tt, var,
+	 b, u, i, center,
+	 dl, dt, dd, ol, ul, li,
+	 fieldset, form, label, legend,
+	 table, caption, tbody, tfoot, thead, tr, th, td,
+	 article, aside, canvas, details, embed,
+	 figure, figcaption, footer, header, hgroup,
+	 menu, nav, output, ruby, section, summary,
+	 time, mark, audio, video {
+	 	margin: 0;
+	 	padding: 0;
+	 	border: 0;
+	 	font-size: 100%;
+	 	font: inherit;
+	 	vertical-align: baseline;
+	 }
+	 /* HTML5 display-role reset for older browsers */
+	 article, aside, details, figcaption, figure,
+	 footer, header, hgroup, menu, nav, section {
+	 	display: block;
+	 }
+	 body {
+	 	line-height: 1;
+	 }
+	 ol, ul {
+	 	list-style: none;
+	 }
+	 blockquote, q {
+	 	quotes: none;
+	 }
+	 blockquote:before, blockquote:after,
+	 q:before, q:after {
+	 	content: '';
+	 	content: none;
+	 }
+	 table {
+	 	border-collapse: collapse;
+	 	border-spacing: 0;
+	 }
+
+
+/*
+ *  Fonts
+ */
+
+	@font-face {
+		font-family: GoodDay;
+		font-display: swap;
+		src: url("fonts/GoodDay.otf");
+		src: local('GoodDay'),
+			 url('fonts/GoodDay.woff') format('woff'),
+			 url('fonts/GoodDay.otf') format('opentype');
+	}
+	@font-face {
+		font-family: qtpi;
+		font-display: swap;
+		src: url("fonts/Qtpi.otf");
+		src: local('Qtpi'),
+			 url('fonts/Qtpi.woff') format('woff'),
+			 url('fonts/Qtpi.otf') format('opentype');
+	}
+
+
+/*
+ *  General
+ */
+
+	body {
+		position: relative;
+
+		font-family: qtpi, sans-serif;
+		font-size: 1.4rem;
+		color: #fff;
+		text-shadow: 0 0 8rem rgba(0, 0, 0, 0.8), 0 0 4rem rgba(0, 0, 0, 0.4);
+
+		overflow: hidden;
+	}
+
+	body:before, body:after {
+		content: "";
+
+		position: fixed;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	body:before, body:after, .page nav {
+		background-position: center top;
+		background-size: calc(100vmax / 100vw * 100vh) calc(100vmax / 100vh * 100vw);
+		animation: rainbow 60s linear infinite alternate;
+	}
+	body.no-webp:before, .no-webp.page nav {
+		background-image: url("images/background-opt2.jpeg");
+	}
+	body.webp:before, .webp.page nav {
+		background-image: url("images/background-opt2.webp");
+	}
+
+	/* Make background repeat (and flip) instead of being fixed (has some better performance, even though performance is still really bad on slow mobile devices.) */
+	@media screen and (max-width: 608px) {
+		body:before, body:after {
+			position: absolute;
+		}
+		body.webp:before, body.no-webp:before {
+			background: url("images/background-opt2-smol.jpeg") left bottom;
+			transform: scaleY(-1);
+		}
+		body.webp:after, body.no-webp:after, .webp.page nav, .no-webp.page nav {
+			background: url("images/background-opt2-smol.jpeg") repeat-x left top,
+        				url("images/background-opt2-smol.jpeg") repeat-x left 2160px;
+		}
+	}
+
+	.container,
+	.home main {
+		width: 100%;
+		max-width: 100rem;
+		padding: 0 10rem;
+	}
+
+	@media screen and (max-width: 1200px) {
+		.container,
+		.home main {
+			padding: 0 8rem;
+		}
+	}
+
+	@media screen and (max-width: 1000px) {
+		.container,
+		.home main {
+			padding: 0 6rem;
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		.container,
+		.home main {
+			padding: 0 4rem;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		.container,
+		.home main {
+			padding: 0 2rem;
+		}
+	}
+
+	a {
+		text-decoration: none;
+		color: #fff;
+		border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+	}
+
+	a:hover {
+		border-bottom-style: solid;
+	}
+
+	.page main a {
+		color: rgba(0, 0, 0, 0.9);
+		border-bottom-color: rgba(0, 0, 0, 0.5);
+	}
+
+	p {
+		margin-bottom: 2rem;
+	}
+
+	button, .button, .btn {
+		font-family: qtpi, sans-serif;
+		color: #fff;
+		padding: .5rem 1.5rem;
+		font-size: 1.8rem;
+		text-shadow: 0 0 8rem rgba(0, 0, 0, 0.8), 0 0 4rem rgba(0, 0, 0, 0.4);
+
+		border: 2px dashed rgba(255, 255, 255, 0.5);
+		background: rgba(255, 255, 255, 0.1);
+		border-radius: 1rem;
+
+		cursor: pointer;
+		transition: background-color .25s;
+	}
+
+	button:hover, .button:hover {
+		background: rgba(255, 255, 255, 0.2);
+		border-bottom-style: dashed;
+	}
+
+	.page main button, .page main .button {
+		border: 2px dashed rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.1);
+		color: rgba(0, 0, 0, 0.9);
+	}
+	.page main button:hover, .page main .button:hover {
+		background: rgba(0, 0, 0, 0.2);
+	}
+
+	nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+
+		display: flex;
+		width: 100%;
+		z-index: 1000;
+
+		opacity: 0;
+		transition: opacity 1s;
+	}
+
+	nav:hover {
+		opacity: 1 !important;
+	}
+
+	nav h2 {
+		margin-right: auto;
+		padding: 1rem;
+
+		font-size: 2rem;
+	}
+
+	nav a {
+		border-bottom-width: 0;
+		color: rgba(255, 255, 255, 0.6);
+		transition: color .25s;
+	}
+
+	nav a:hover {
+		color: rgba(255, 255, 255, 1);
+	}
+
+	nav h2 strong {
+		font-family: GoodDay, cursive;
+		font-size: 2.8rem;
+		letter-spacing: -0.025em;
+		line-height: 2rem;
+	}
+
+	nav ul {
+		list-style: none;
+		display: flex;
+		padding: 1.35rem;
+	}
+
+	nav ul li {
+		margin: 0 0.75rem;
+	}
+
+	nav ul li a {
+		font-size: 1.3rem;
+		border-bottom-width: 0;
+		text-decoration: none;
+	}
+
+	@keyframes rainbow {
+		0% { filter: hue-rotate(34deg); }
+		100% { filter: hue-rotate(2deg); }
+	}
+
+	header {
+		height: 100vh;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		position: relative;
+	}
+
+	.page header {
+		height: auto;
+		padding: 10rem 0;
+	}
+
+	header .header-content {
+		height: auto;
+		margin: auto;
+
+		position: relative;
+		z-index: 1010;
+	}
+
+	@media (pointer:none), (pointer:coarse) {
+		header .header-content {
+			z-index: 0;
+		}
+	}
+
+	.page header .header-content {
+		text-align: center;
+	}
+
+	@keyframes fadein {
+		0% { opacity: 0; transform: translateY(-50%); }
+		60% { opacity: 0; transform: translateY(-50%); }
+		100% { opacity: 1; transform: translateY(0); }
+	}
+	@keyframes fadein-slow {
+		0% { opacity: 0; transform: translateY(-2rem); }
+		70% { opacity: 0; transform: translateY(-2rem); }
+		100% { opacity: 1; transform: translateY(0); }
+	}
+	@keyframes fadeup-slow {
+		0% { opacity: 0; transform: translateY(2rem); }
+		70% { opacity: 0; transform: translateY(2rem); }
+		100% { opacity: 1; transform: translateY(0); }
+	}
+
+	header .header-content h1 {
+		font-size: 8rem;
+		font-family: GoodDay, cursive;
+		text-transform: lowercase;
+		color: #fff;
+		letter-spacing: -0.025em;
+
+		animation: fadein 2s ease-out;
+	}
+
+	@media screen and (max-width: 800px) {
+		header .header-content h1 {
+			font-size: 6rem;
+		}
+	}
+
+	@media screen and (max-width: 600px) {
+		header .header-content h1 {
+			font-size: 5rem;
+		}
+	}
+
+	header .header-content h1 span {
+		animation: fadein-slow 3s ease-out;
+		display: inline-block;
+	}
+
+	header .header-content > span {
+		font-family: qtpi, sans-serif;
+		font-size: 2rem;
+		color: #fff;
+
+		animation: fadein 5s ease-out;
+	}
+
+	@media screen and (max-width: 600px) {
+		header .header-content > span {
+			font-size: 1.8rem;
+		}
+	}
+
+	header .header-content .header-socials {
+		margin-top: 3.5rem;
+		font-size: 1.8rem;
+	}
+
+	header .header-content .header-socials a {
+		color: rgba(255, 255, 255, 0.6);
+		border-bottom: none;
+
+		margin-right: 2.5rem;
+
+		animation: fadein-slow 5s ease-out;
+	}
+
+	header .header-content .header-socials a:nth-child(1) { animation-duration: 5s; }
+	header .header-content .header-socials a:nth-child(2) { animation-duration: 5.1s; }
+	header .header-content .header-socials a:nth-child(3) { animation-duration: 5.2s; }
+	header .header-content .header-socials a:nth-child(4) { animation-duration: 5.3s; }
+	header .header-content .header-socials a:nth-child(5) { animation-duration: 5.4s; }
+	header .header-content .header-socials a:nth-child(6) { animation-duration: 5.5s; }
+	header .header-content .header-socials a:nth-child(7) { animation-duration: 5.6s; }
+	header .header-content .header-socials a:nth-child(8) { animation-duration: 5.7s; }
+	header .header-content .header-socials a:nth-child(9) { animation-duration: 5.8s; }
+	header .header-content .header-socials a:nth-child(10) { animation-duration: 5.9s; }
+
+	header .header-content .header-socials a:hover {
+		color: rgba(255, 255, 255, 1);
+	}
+
+	header .header-content .header-socials a svg {
+		width: 1em;
+		height: 1em;
+		transform-origin: 0 0;
+	}
+
+	/* Scroll Icon */
+
+		@keyframes scroll {
+			0% { opacity: 1; }
+			100% { opacity: 0; transform: translateY(46px); }
+		}
+		.icon-scroll {
+			position: relative;
+			width: 40px;
+			height: 70px;
+			box-shadow: inset 0 0 0 1px #fff;
+			border-radius: 25px;
+		}
+		.icon-scroll:before {
+			position: absolute;
+			left: 50%;
+
+			content: '';
+			width: 8px;
+			height: 8px;
+			background: #fff;
+			margin-left: -4px;
+			top: 8px;
+			border-radius: 4px;
+			animation: scroll 1.5s infinite;
+		}
+
+	header .icon-scroll {
+		position: absolute;
+		bottom: 4rem;
+		left: 50%;
+		margin-left: -20px;
+
+		animation: fadeup-slow 5s ease-out;
+
+		transition: .4s opacity;
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+
+		margin: 0 auto;
+
+		min-height: 65vh;
+		padding-bottom: 5rem !important; /* Ugh */
+	}
+
+	.page main {
+		background: #fff;
+		color: rgba(0, 0, 0, 0.9);
+		padding: 0 1rem;
+		padding-top: 5rem;
+		font-family: sans-serif; /* Using a web save font here since this isn't that much text, and it saves a lot of data. */
+		text-shadow: none;
+	}
+
+	main section,
+	main div[id^="addition_content"] {
+		width: 100%;
+		max-width: 35rem;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 3rem;
+		border-radius: 2rem;
+		position: relative;
+		margin-top: 5rem;
+	}
+
+	main section,
+	main div[id^="addition_content"] {
+		margin-left: auto;
+	}
+
+	main section:nth-child(2n),
+	main div[id^="addition_content"]:nth-child(4n+1) {
+		margin-left: 0;
+		margin-right: auto;
+	}
+
+
+	@media screen and (max-width: 1500px) {
+		main section,
+		main div[id^="addition_content"] {
+			margin-bottom: 5rem;
+		}
+		main .container:last-of-type section {
+			margin-bottom: 0;
+		}
+	}
+	@media screen and (max-width: 1000px) {
+		main section,
+		main div[id^="addition_content"] {
+			padding: 2rem;
+		}
+	}
+
+	main section h3,
+	main div[id^="addition_content"] h3 {
+		font-family: GoodDay, cursive;
+		text-transform: lowercase;
+		font-size: 3.2rem;
+		position: absolute;
+		top: -1rem;
+		left: 3rem;
+		transform: translateY(-100%);
+	}
+	@media screen and (max-width: 1000px) {
+		main section h3,
+		main div[id^="addition_content"] h3 {
+			font-size: 2.8rem;
+			left: 1rem;
+		}
+	}
+	main section p,
+	main div[id^="addition_content"] p {
+		font-size: 1.8rem;
+	}
+	@media screen and (max-width: 1000px) {
+		main section p,
+		main div[id^="addition_content"] p {
+			font-size: 1.5rem;
+		}
+	}
+
+	footer {
+		text-align: center;
+		max-width: 45rem;
+		margin: 0 auto;
+		padding: 2rem 5rem;
+		margin-top: 2rem;
+	}
